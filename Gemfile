@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'simple_form'
 
 gem 'faker'
+
+
+gem 'devise'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

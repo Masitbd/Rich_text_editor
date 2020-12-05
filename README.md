@@ -1,24 +1,69 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Add the rich text editor
+// Console
+rails action_text:install
+ 
+// application.js
+require("trix")
+require("@rails/actiontext")
+ 
+// actiontext.scss
+@import "trix/dist/trix";
+ 
+// application.scss
+@import "./actiontext.scss";
+ 
+// app/models/course.rb
+class Course < ApplicationRecord
+  has_rich_text :description
+end
+ 
+// app/views/courses/_form.html.erb
+ERB
+<%= f.label :description %>
+<%= f.rich_text_area :description %>
+ 
+HAML + simple_form:
+= f.input :description, as: :rich_text_area
+Fullscreen
 
-Things you may want to cover:
+##  Add the fake dara in the application
 
-* Ruby version
+add fake data to the app
 
-* System dependencies
+https://github.com/faker-ruby/faker
 
-* Configuration
 
-* Database creation
+// Gemfile
+gem 'faker'
+ 
+// seeds.rb
+30.times do
+  Course.create!([{
+    title: Faker::Educator.course_name,
+    description: Faker::TvShows::GameOfThrones.quote
+  }])
+end
+ 
+// Console
+bundle
+rails db:seed
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Devise install for the application login
 
-* Deployment instructions
+https://github.com/heartcombo/devise
 
-* ...
+
+- Add the login and the logout functionality
+
+<% if current_user %>
+  <%= current_user.username %>
+  <%= link_to 'Account settings', edit_user_registration_path %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign Up', new_user_registration_path %>
+  <%= link_to 'Log In', new_user_session_path %>
+<% end %>
