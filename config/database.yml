@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rms_development
+  username: postgres
+  password: omniood
+
+  
+test:
+  <<: *default
+  database: rms_test
+  username: postgres
+  password: omniood
+
+
+production:
+  <<: *default
+  database: rms_production
+  username: rms
+  password: <%= ENV['RMS_DATABASE_PASSWORD'] %>
