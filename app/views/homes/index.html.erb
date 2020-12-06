@@ -1,5 +1,89 @@
+<div class="jumbotron">
+    <div class="display-4">
+        What do you want to learn today?
+    </div>
+    <div class="p-4"></div>
 
-<div class="container">
-<h1>This is our index page</h1>
-
+    <%= link_to root_path do %>
+    <div class="fa fa-home"></div>
+    <div class="form-inline my-2 my-lg-0">
+        <%= form_tag(courses_path, method: :get) do %>
+        <div class="input-group">
+            <%= text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm' %>
+            <span class="input-group-append">
+                <button class="btn btn-primary btn-sm" type="submit">
+                    <span aria-hidden="true" class="fa fa-search"></span>
+                </button>
+            </span>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
 </div>
+<div class="card-group">
+    <div class="card card-body">
+        <h1>
+            <div class="fa fa-graduation-cap"></div>
+        </h1>
+        <%= Course.count %>
+        online courses
+        <div class="row"></div>
+        Explore a variety of fresh topics
+    </div>
+    <div class="card card-body">
+        <h1>
+            <div class="fa fa-chalkboard-teacher"></div>
+            <!--.fa.fa-brain
+      -->
+        </h1>
+        <%= Course.distinct.count(:user_id) %>
+        expert instructors
+        <div class="row"></div>
+        Find the right instructor for you
+    </div>
+    <div class="card card-body">
+        <h1>
+            <div class="fa fa-user-graduate"></div>
+        </h1>
+        <%= User.count %>
+        active learners
+        <div class="row"></div>
+        Join the knowledge sharing community
+    </div>
+    <div class="card card-body">
+        <h1>
+            <div class="fa fa-infinity"></div>
+        </h1>
+        Lifetime access
+        <div class="row"></div>
+        Learn on your schedule
+    </div>
+</div>
+<hr />
+<h2>
+    Popular courses
+</h2>
+<div class="card-columns">
+    <% @courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+    <% end %>
+</div>
+<hr />
+<h2>
+    Top rated courses
+</h2>
+<div class="card-columns">
+    <% @courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+    <% end %>
+</div>
+<hr />
+<h2>
+    Latest courses
+</h2>
+<div class="card-columns">
+    <% @latest_couses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+    <% end %>
+</div>
+<hr />

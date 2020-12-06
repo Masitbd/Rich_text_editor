@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <title>Rms</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,8 +13,10 @@
   </head>
 
   <body>
-  <%= render 'layouts/header' %>
+  <%= render 'layouts/navbar' %>
   <%= render 'layouts/messages' %>
-   <%= yield %>
+  <div class="container">
+     <%= yield %>
+   </div>
   </body>
 </html>
