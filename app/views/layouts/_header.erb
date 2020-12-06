@@ -6,3 +6,73 @@
   <%= link_to 'Sign Up', new_user_registration_path %>
   <%= link_to 'Log In', new_user_session_path %>
 <% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to "Resturent Management Systems", root_path, class: "navbar-brand" %>
+  <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if current_user %>
+      <ul class="navbar-nav mr-auto">
+        <li class="<%= 'active font-weight-bold' if current_page?(root_path) %> nav-item">
+          <%= link_to root_path, class: 'nav-link' do %>
+            <div class="fa fa-home"></div>
+            Home
+          <% end %>
+        </li>
+        <li class="<%= 'active font-weight-bold' if current_page?(courses_path) %> nav-item">
+          <%= link_to courses_path, class: 'nav-link' do %>
+            <div class="fa fa-book"></div>
+            Courses
+          <% end %>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <%= form_tag(root_path, method: :get) do %>
+          <div class="input-group">
+            <%= text_field_tag :name, params[:name], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm' %>
+            <span class="input-group-append">
+              <button class="btn btn-primary btn-sm" type="submit">
+                <span aria-hidden="true" class="fa fa-search"></span>
+              </button>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <ul class="navbar-nav mr-right">
+        <li class="<%= 'active font-weight-bold' if current_page?(root_path) %> nav-item">
+          <%= link_to root_path, class: 'nav-link' do %>
+            <div class="fa fa-home"></div>
+            Another link
+          <% end %>
+        </li>
+        <li class="nav-item dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+            <b>
+              <%= current_user.email %>
+            </b>
+          </a>
+          <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
+            <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+              <div class="fa fa-cog"></div>
+              <b>Account settings</b>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+              <div class="fa fa-sign-out-alt"></div>
+              <b>Sign out</b>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>

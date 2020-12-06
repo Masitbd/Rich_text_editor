@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-30.times do
+User.create(email: 'test@test.com', password: '123456', password_confirmation: '123456')
+100.times do
     Course.create!([{
       title: Faker::Educator.course_name,
-      description: Faker::TvShows::GameOfThrones.quote
+      description: Faker::TvShows::GameOfThrones.quote,
+      user_id: User.first.id
     }])
   end
