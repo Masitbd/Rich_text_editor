@@ -67,3 +67,8 @@ https://github.com/heartcombo/devise
   <%= link_to 'Sign Up', new_user_registration_path %>
   <%= link_to 'Log In', new_user_session_path %>
 <% end %>
+
+
+## come back to last migration ---delete last migration
+
+- rails db:rollback

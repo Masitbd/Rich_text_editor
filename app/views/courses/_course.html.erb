@@ -7,6 +7,14 @@
     <%= course.description %>
   </div>
   <div class="card-footer">
+  <div class="fa fa-globe-africa"></div>
+  <%= course.language %>
+
+  <div class="fa fa-signal"></div>
+  <%= course.level %>
+  <%= number_to_currency(course.price) %>
+  </div>
+  <div class="card-footer">
     <div class="far fa-clock"></div>
     <%= course.created_at.strftime('%d-%b-%Y') %>
     <div class="row"></div>
