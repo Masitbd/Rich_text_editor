@@ -28,6 +28,9 @@ gem 'devise'
 gem 'friendly_id', '~> 5.2.4'
 # ransack gem is use for effective search purpose
 gem 'ransack'
+
+# track the user activity use the public activity gem
+gem 'public_activity'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

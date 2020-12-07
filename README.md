@@ -72,3 +72,9 @@ https://github.com/heartcombo/devise
 ## come back to last migration ---delete last migration
 
 - rails db:rollback
+
+## Add the ransack gem for the advance search activity
+- https://github.com/activerecord-hackery/ransack
+
+## Add the public activity gem for tracking the recoed of user activity
+- https://github.com/chaps-io/public_activity

@@ -39,6 +39,12 @@
     Users
   <% end %>
 </li>
+<li class="<%= 'active font-weight-bold' if current_page?(homes_activity_path) %> nav-item">
+  <%= link_to homes_activity_path, class: 'nav-link' do %>
+    <div class="fa fa-bell"></div>
+    Activity
+  <% end %>
+</li>
 
 
       </ul>
