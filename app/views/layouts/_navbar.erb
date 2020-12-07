@@ -42,6 +42,19 @@
 
 
       </ul>
+      
+      <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
+        <div class="input-group">
+          <%= f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off %>
+          <span class="input-group-append">
+            <button class="btn btn-primary btn-sm" type="submit">
+              <span aria-hidden="true" class="fa fa-search"></span>
+            </button>
+          </span>
+        </div>
+      <% end %>
+</div>
+<!--
       <div class="form-inline my-2 my-lg-0">
         <%= form_tag(courses_path, method: :get) do %>
           <div class="input-group">
@@ -54,6 +67,8 @@
           </div>
         <% end %>
       </div>
+
+      -->
       <ul class="navbar-nav mr-right">
         <li class="<%= 'active font-weight-bold' if current_page?(root_path) %> nav-item">
           <%= link_to root_path, class: 'nav-link' do %>

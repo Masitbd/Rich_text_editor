@@ -19,7 +19,7 @@
     <%= course.created_at.strftime('%d-%b-%Y') %>
     <div class="row"></div>
     <div class="fa fa-chalkboard-teacher"></div>
-    <%= course.user %>
+    <%= course.user.username %>
   </div>
   <div class="card-footer">
     <%= link_to 'Show', course, class: 'btn btn-sm btn-primary' %>

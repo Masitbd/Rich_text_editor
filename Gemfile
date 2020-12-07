@@ -26,6 +26,8 @@ gem 'simple_form'
 gem 'faker'
 gem 'devise'
 gem 'friendly_id', '~> 5.2.4'
+# ransack gem is use for effective search purpose
+gem 'ransack'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

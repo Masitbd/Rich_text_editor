@@ -37,3 +37,52 @@
 
 
 <%= link_to 'New Course', new_course_path %>
+
+
+
+
+<h1></h1>
+Courses:
+<div class="card-columns">
+  <% @courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <!--
+    <%= # search_form_for @q do |f| 
+    %>
+      <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
+      <%= f.label :title %>
+      <%= f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm' %>
+      <%= f.label :description %>
+      <%= f.search_field :short_description_cont, placeholder: 'Description', class: 'form-control form-control-sm' %>
+      <!--= f.search_field :language_cont, placeholder: 'Language', class: 'form-control form-control-sm'
+      -->
+      <!--= f.select :language_cont, ['English', 'Polish', 'Russian'], include_blank: true, class: 'form-control form-control-sm'
+      -->
+      <%= f.label :language %>
+      <%= f.select :language_cont, Course.languages, include_blank: true %>
+      <!--= f.search_field :level_cont, placeholder: 'Level', class: 'form-control form-control-sm'
+      -->
+      <%= f.label :level %>
+      <%= f.select :level_cont, Course.levels, include_blank: true %>
+      <%= f.label :price %>
+      <%= f.search_field :price_eq, placeholder: 'Price', class: 'form-control form-control-sm' %>
+      <%= f.label :teacher %>
+      <%= f.search_field :user_email_cont, placeholder: 'Email', class: 'form-control form-control-sm' %>
+      <%= f.submit %>
+    <% end %>
+    <%= link_to 'refresh', courses_path %>
+  </div>
+  <div class="col-md-10">
+    <div class="card-columns">
+      <% @courses.each do |course| %>
+        <%= render 'courses/course', course: course %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br/>
+
