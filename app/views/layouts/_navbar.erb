@@ -33,6 +33,14 @@
   <% end %>
 </li>
 
+<li class="<%= 'active font-weight-bold' if current_page?(users_path) %> nav-item">
+  <%= link_to users_path, class: 'nav-link' do %>
+    <div class="fa fa-users"></div>
+    Users
+  <% end %>
+</li>
+
+
       </ul>
       <div class="form-inline my-2 my-lg-0">
         <%= form_tag(courses_path, method: :get) do %>
